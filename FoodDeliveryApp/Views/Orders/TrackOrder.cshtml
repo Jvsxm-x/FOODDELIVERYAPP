@@ -1,0 +1,30 @@
+﻿@model FoodDeliveryApp.Models.Order
+
+@{
+    ViewData["Title"] = "Track Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <h5 class="section-title ff-secondary text-start text-primary fw-normal">Order Tracking</h5>
+        <h1 class="mb-4">Order #@Model.Id</h1>
+        <div class="card">
+            <div class="card-body">
+                <p><strong>Status:</strong> @Model.Status</p>
+                <p><strong>Order Date:</strong> @Model.OrderDate.ToString("g")</p>
+                <p><strong>Customer:</strong> @Model.User?.FullName</p>
+                <p><strong>Delivery Address:</strong> @Model.Delivery?.Address</p>
+                <p><strong>Estimated Delivery:</strong> @Model.Delivery?.EstimatedDeliveryTime.ToString("g")</p>
+                <p><strong>Payment Method:</strong> @Model.Payment?.PaymentMethod (@(Model.Payment?.IsPaid == true ? "Paid" : "Not Paid"))</p>
+                <h6>Items</h6>
+                <ul>
+                    @foreach (var item in Model.OrderItems ?? Enumerable.Empty<OrderItem>())
+                    {
+                        <li>@item.FoodItem?.Name x @item.Quantity - $@item.UnitPrice</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

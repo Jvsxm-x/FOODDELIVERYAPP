@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FoodDeliveryApp.Models.Category>
+
+@{
+    ViewData["Title"] = "Browse Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <h5 class="section-title ff-secondary text-start text-primary fw-normal">Categories</h5>
+        <h1 class="mb-4">Food Categories</h1>
+        <div class="row g-4">
+            @foreach (var category in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@category.Name</h5>
+                            <p class="card-text">@(category.FoodItems?.Count ?? 0) items</p>
+                            <a asp-controller="FoodItems" asp-action="BrowseByCategory" asp-route-categoryId="@category.Id" class="btn btn-primary">View Items</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

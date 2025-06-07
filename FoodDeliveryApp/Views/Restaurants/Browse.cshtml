@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FoodDeliveryApp.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "Browse Restaurants";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <h5 class="section-title ff-secondary text-start text-primary fw-normal">Restaurants</h5>
+        <h1 class="mb-4">Our Restaurants</h1>
+        <div class="row g-4">
+            @foreach (var restaurant in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@restaurant.Name</h5>
+                            <p class="card-text"><strong>Address:</strong> @restaurant.Address</p>
+                            <p class="card-text"><strong>Phone:</strong> @restaurant.Phone</p>
+                            <h6>Menu</h6>
+                            <ul>
+                                @foreach (var item in restaurant.FoodItems ?? Enumerable.Empty<FoodItem>())
+                                {
+                                    <li>@item.Name - $@item.Price (@item.Category?.Name)</li>
+                                }
+                            </ul>
+                            <a asp-action="Details" asp-route-id="@restaurant.Id" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

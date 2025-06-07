@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <h5 class="section-title ff-secondary text-start text-primary fw-normal">About</h5>
+        <h1 class="mb-4">Welcome to Our Restaurant</h1>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <p class="lead">
+                    We are a premier food delivery service dedicated to bringing delicious meals from the best restaurants to your doorstep.
+                    Our mission is to provide exceptional quality, convenience, and customer satisfaction.
+                </p>
+                <p>
+                    Founded in 2023, our team is passionate about food and technology, ensuring a seamless ordering experience.
+                    Whether you're craving a quick snack or a gourmet meal, we've got you covered.
+                </p>
+                <a class="btn btn-primary py-2 px-4" href="@Url.Action("Menu", "FoodItems")">Explore Our Menu</a>
+            </div>
+            <div class="col-lg-6">
+                <img src="~/img/about.jpg" class="img-fluid rounded" alt="About Us">
+            </div>
+        </div>
+    </div>
+</div>

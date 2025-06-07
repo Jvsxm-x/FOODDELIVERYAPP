@@ -1,0 +1,21 @@
+﻿@model FoodDeliveryApp.Models.Delivery
+
+@{
+    ViewData["Title"] = "Track Delivery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <h5 class="section-title ff-secondary text-start text-primary fw-normal">Delivery Tracking</h5>
+        <h1 class="mb-4">Delivery for Order #@Model.OrderId</h1>
+        <div class="card">
+            <div class="card-body">
+                <p><strong>Address:</strong> @Model.Address</p>
+                <p><strong>Estimated Delivery Time:</strong> @Model.EstimatedDeliveryTime.ToString("g")</p>
+                <p><strong>Delivery Personnel:</strong> @(Model.DeliveryUser?.FullName ?? "Not Assigned")</p>
+                <p><strong>Order Status:</strong> @Model.Order?.Status</p>
+            </div>
+        </div>
+    </div>
+</div>
